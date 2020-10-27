@@ -1,0 +1,22 @@
+<div
+  class="sidebar"
+  data-color="blue"
+  data-background-color="white"
+  data-image="../assets/img/sidebar-1.jpg"
+>
+  <!--
+    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+    Tip 2: you can also add an image using data-image tag
+-->
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li *ngFor="let menuItem of menuItems" class="nav-item"  routerLinkActive="active">
+        <a class="nav-link" routerLink={{menuItem.ruta}} >
+          <i class="material-icons">{{menuItem.icon}}</i>
+          <p>{{menuItem.label}}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-info">
+          <h4 class="card-title">Lista de productos</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-shopping">
+              <thead>
+                <tr>
+                  <th class="text-center"></th>
+                  <th class="text-center">Producto</th>
+                  <th class="text-center">Descripción</th>
+                  <th class="text-center">Precio</th>
+                  <th class="text-center">Cantidad</th>
+                  <th class="text-center">Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of products; let i = index">
+                  <td>
+                    <div class="img-container">
+                      <img
+                        src="https://images.thenorthface.com/is/image/TheNorthFace/NF0A2VFL_619_hero"
+                        rel="nofollow"
+                        alt="..."
+                      />
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <div class="td-name">
+                      <a href="#jacket">{{ product.nombre }}</a>
+                      <br /><small>{{ product.categoria }}</small>
+                    </div>
+                  </td>
+                  <td>{{ product.descripcion }}</td>
+                  <td>{{ product.precio | currency }}</td>
+
+                  <td class="td-number">
+                    <tr>
+                      <td class="text-center">{{product.cantidad}}</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="btn-group">
+                          <button
+                            (click)="decrementar(i)"
+                            class="btn btn-round btn-danger btn-sm"
+                          >
+                            <i class="material-icons">remove</i>
+                          </button>
+                          <button
+                            (click)="incrementar(i)"
+                            class="btn btn-round btn-success btn-sm"
+                          >
+                            <i class="material-icons">add</i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </td>
+                  <td class="text-center">
+                    {{ product.precio * product.cantidad  | currency }}
+                  </td>
+                  <td class="td-actions">
+                    <button
+                      type="button"
+                      rel="tooltip"
+                      data-placement="left"
+                      title="Agregar al carrito"
+                      class="btn btn-info"
+                      (click)="addCart(product)"
+                    >
+                      <i class="material-icons">add_shopping_cart</i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

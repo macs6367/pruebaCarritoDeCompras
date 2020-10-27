@@ -1,0 +1,207 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-info">
+          <h4 class="card-title">Gestión de productos</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center"></th>
+                  <th class="text-center">Producto</th>
+                  <th class="text-center">Descripción</th>
+                  <th class="text-center">Precio</th>
+                  <th class="text-center">Stock</th>
+                  <th class="text-center">Estado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of products; let i = index">
+                  <td>
+                    <div class="img-container">
+                      <img
+                        src="https://images.thenorthface.com/is/image/TheNorthFace/NF0A2VFL_619_hero"
+                        rel="nofollow"
+                        alt="..."
+                      />
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <div class="td-name">
+                      <a href="#jacket">{{ product.nombre }}</a>
+                      <br /><small>{{ product.categoria }}</small>
+                    </div>
+                  </td>
+                  <td>{{ product.descripcion }}</td>
+                  <td>{{ product.precio | currency }}</td>
+
+                  <td class="text-center">{{ product.stock }}</td>
+
+                  <td class="text-center">
+                    {{ product.estado ? "Activo" : "Inactivo" }}
+                  </td>
+                  <td class="td-actions">
+                    <button
+                      type="button"
+                      title="Editar producto"
+                      data-toggle="modal"
+                      data-target="#modalProductUpdate"
+                      class="btn btn-warning btn-fab btn-fab-mini btn-round"
+                      (click)="setModalProduct(product)"
+                    >
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button
+                      type="button"
+                      title="Eliminar producto"
+                      class="btn btn-danger btn-fab btn-fab-mini btn-round"
+                      (click)="deleteProduct(product.id)"
+                    >
+                      <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="modalProductUpdate"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title font-weight-bold" id="modal">
+            Actualización de producto
+          </h4>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="currentProductForm">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Nombre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nombre"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Categoria</label>
+                  <select
+                    formControlName="categoria"
+                    class="form-control selectpicker"
+                    data-style="btn btn-link"
+                  >
+                    <option value="Obra blanca">Obra blanca</option>
+                    <option value="Madera">Madera</option>
+                    <option value="Iluminacion">Iluminacion</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Precio</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="precio"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Descripcion</label>
+                  <textarea
+                    class="form-control"
+                    formControlName="descripcion"
+                    rows="3"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Stock</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="stock"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">SKU</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="sku"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Estado</label>
+
+                  <div class="togglebutton">
+                    <label>
+                      <input type="checkbox" formControlName="estado" />
+                      <span class="toggle"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="closeModal"
+            data-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="updateProduct()"
+          >
+            Guardar cambios
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

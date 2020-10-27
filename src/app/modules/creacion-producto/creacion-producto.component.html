@@ -1,0 +1,118 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-info">
+          <h4 class="card-title">Creacion de un producto</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="productForm">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Nombre producto</label>
+                  <input
+                    type="text"
+                    formControlName="nombre"
+                    class="form-control"
+                    id="nombre"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="categoria">Categoria</label>
+                  <select
+                    formControlName="categoria"
+                    class="form-control selectpicker"
+                    data-style="btn btn-link"
+                    id="categoria"
+                  >
+                    <option value="Obra blanca">Obra blanca</option>
+                    <option value="Madera">Madera</option>
+                    <option value="Iluminacion">Iluminacion</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Precio</label>
+                  <input
+                    formControlName="precio"
+                    type="text"
+                    class="form-control"
+                    placeholder="$$$"
+                    id="precio"
+                  />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Stock</label>
+                  <input
+                    type="text"
+                    formControlName="stock"
+                    class="form-control"
+                    id="stock"
+                  />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="estado">Estado</label>
+                  <select
+                    formControlName="estado"
+                    class="form-control selectpicker"
+                    data-style="btn btn-link"
+                    id="estado"
+                  >
+                    <option value="true">Disponible</option>
+                    <option value="false">No disponible</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Sku</label>
+                  <input
+                    type="text"
+                    formControlName="sku"
+                    class="form-control"
+                    id="sku"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Descripción</label>
+                  <textarea
+                    class="form-control"
+                    formControlName="descripcion"
+                    rows="3"
+                    id="descripcion"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              [disabled]="productForm.invalid"
+              (click)="addProduct()"
+              class="btn btn-primary pull-right"
+            >
+              crear producto
+            </button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

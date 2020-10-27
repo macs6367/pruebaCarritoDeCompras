@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "carrito-de-compras-5fb28": {
+      "hosting": {
+        "carrito-de-compras": [
+          "carrito-de-compras-5fb28"
+        ]
+      }
+    }
+  }
+}
